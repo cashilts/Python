@@ -25,11 +25,11 @@ does all of the following, each on a separate line:
 """  
 #%%      
 def problem2_1():
-    pass # replace this pass (a do-nothing) statement with your code
-
-
-
-
+    lis = list(range(20,30))
+    print(lis[3]);
+    print(lis);
+    for item in lis:
+        print(item, end=" ");
 
 
 
@@ -67,7 +67,17 @@ alist = ["a","e","i","o","u","y"]
 blist = ["alpha", "beta", "gamma", "delta", "epsilon", "eta", "theta"] 
 
 def problem2_2(my_list):
-    pass # replace this pass (a do-nothing) statement with your code
+    print(my_list)
+    print(my_list[0])
+    print(my_list[len(my_list)-1])
+    print(my_list[3:5])
+    print(my_list[0:3])
+    print(my_list[3:len(my_list)])
+    print(len(my_list))
+    my_list.append('z')
+    print(my_list)
+    
+    
 
 
 
@@ -128,7 +138,8 @@ newEngland = ["Maine","New Hampshire","Vermont", "Rhode Island",
 "Massachusetts","Connecticut"]
 
 def problem2_3(ne):
-    pass # replace this pass (a do-nothing) statement with your code
+   for item in ne:
+       print(item, " has ", len(item), " letters.")
 
     
 #%%
@@ -144,9 +155,14 @@ import random
 
 def problem2_4():
     """ Make a list of 10 random reals between 30 and 35 """
-    random.seed()
-    pass # replace this pass (a do-nothing) statement with your code
-
+    random.seed(70)
+    rand_list = []
+    for num in range(0,10):
+        rand = random.random()
+        rand = rand *5 + 30
+        rand_list.append(rand)
+    print(rand_list)
+    
 #%%
 """
 COMMENT: Note that this uses a pseudorandom number generator.  That means
@@ -201,7 +217,8 @@ def problem2_5():
     # Setting the seed makes the random numbers always the same
     # This is to make the auto-grader's job easier.
     random.seed(171)  # don't remove when you submit for grading
-    pass # replace this pass (a do-nothing) statement with your code
+    for roll in range(0,10):
+        print(random.randint(1,6))
 
 #%%
 """
@@ -220,7 +237,10 @@ def problem2_6():
     # Setting the seed makes the random numbers always the same
     # This is to make the auto-grader's job easier.
     random.seed(431)  # don't remove when you submit for grading
-    pass # replace this pass (a do-nothing) statement with your code
+    for roll in range(0,100):
+        die1 = random.randint(1,6)
+        die2 = random.randint(1,6)
+        print(die1+die2)
 
    
 #%%
@@ -282,7 +302,12 @@ Area of a triangle with sides 3.0 4.0 5.0 is 6.0
 
 def problem2_7():
     """ computes area of triangle using Heron's formula. """
-    pass # replace this pass (a do-nothing) statement with your code
+    side1 = float(input("enter length of side one:"))
+    side2 = float(input("enter length of side two:"))
+    side3 = float(input("enter length of side three:"))
+    s = .5*(side1+side2+side3)
+    area = (s*(s-side1)*(s-side2)*(s-side3))**.5
+    print("Area of a traingle with sides",side1, side2,side3, "is",area)
     
 #%%
 """ 
@@ -304,7 +329,15 @@ hourly_temp = [40.0, 39.0, 37.0, 34.0, 33.0, 34.0, 36.0, 37.0, 38.0, 39.0, \
                36.0, 35.0, 33.0, 32.0]
 #%%
 def problem2_8(temp_list):
-    pass # replace this pass (a do-nothing) statement with your code
+    sum = 0
+    for temp in temp_list:
+        sum += temp
+    avg = sum/len(temp_list)
+    max_temp = max(temp_list)
+    min_temp = min(temp_list)
+    print("Average:",avg)
+    print("High:",max_temp)
+    print("Low:",min_temp)
         
     
 #%%
