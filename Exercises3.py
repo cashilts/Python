@@ -196,9 +196,9 @@ agedict = {"George":"17","Sally":"19",
              "Catherine":"18"}
 #%%
 # Which work (you might copy each into IPython and see whether it works)?
-namelist[1]   # yes or no
-mytuple[1]    # yes or no
-agedict[1]    # yes or no      
+namelist[1]   # yes
+mytuple[1]    # yes
+#agedict[1]    # no      
 #%%
 # Which work?
 namelist.append("Rod")   # yes or no
@@ -293,7 +293,10 @@ outline of what needs to be done is given as comments.
 #%% 
 def write_to_file(filename, myname, myage, major):
     # open file first
+    outfile = open(filename,'w')
     outfile.write("My name is "+ myname + " \n")
+    outfile.write("My age is " + myage + "\n")
+    outfile.write("I am majoring in " + major + "\n")
     # write out the age and major in two lines
     # close the file
 
@@ -370,17 +373,18 @@ Steps:
 Here is how running it should look:
 >python copy_file.py humptydumpty.txt newhumpty.txt
 """
+import sys
+infilename = sys.argv[1]
+outfilename = sys.argv[2]
 
-def copy_file(infilename, outfilename):
-    """ Opens two files and copies one into the other line by line. """
-    infile = open(infilename)
-    outfile = open(outfilename,'w')
+infile = open(infilename)
+outfile = open(outfilename,'w')
     
-    for line in infile:
-        outfile.write(line)
+for line in infile:
+    outfile.write(line)
         
-    infile.close()
-    outfile.close()
+infile.close()
+outfile.close()
 #%%
     
 """
@@ -514,11 +518,6 @@ word_list = sorted(words_dic)
 for word in word_list:
     print(words_dic[word], word)
                
-# Sorts the dictionary words into a list and then print them out
-print("List of words in the file with number of times each appears.")
-word_list = sorted(words_dic)
-for word in word_list:
-    print(words_dic[word], word)
 #%% 
 
 """ 
@@ -613,7 +612,7 @@ def read_csv_file2(filename):
     """Reads a CSV file and prints each row without list brackets. """
     f = open(filename)
     for row in csv.reader(f):
-        pass # replace this line with your code
+        print(row[0] + ", " + row[1] + " " + row[2])
     f.close()
 #%%
 """
@@ -683,12 +682,17 @@ Solution starter:
 def name_phone(csv_filename):
     
     # open the csv file here
+    infile = open(csv_filename,'w')
     
     while True:
         nextname = input("Enter a friend's name, press return to end: ")
         if nextname == "":
             break              # break jumps out of the loop
-        print(nextname) 
+        print(nextname)
+        nextnum = input("Enter a friends's number: ")
+        print(nextnum)
+        l = [nextname,nextnum]
+        csv.writer(infile).writerow(l)
         
         # add lines here to build a row (that is, a list) and append these
         # two pieces of data to it.  Write to the csv file
